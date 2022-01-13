@@ -13,9 +13,6 @@ class ManageGoods_window : public AddGoods_window
     Q_OBJECT
 
 public:
-    //vector<QLineEdit *> num_in_v;
-    //vector<QLineEdit *> price_in_v;
-
     explicit ManageGoods_window(QWidget *parent = nullptr);
     ~ManageGoods_window();
     void card_grid_layout(int q, QGridLayout *grid, int row_idx) override;
@@ -29,8 +26,11 @@ private:
     void on_add_clicked() override;
     void on_sort_box_currentTextChanged(const QString &arg1) override;
     void on_rownum_box_currentTextChanged(const QString &arg1) override;
+    void on_search_clicked() override;
 
     void reject() override;
+
+    void sub_layout(QGridLayout *grid, int idx, int i);
 };
 
 #endif // MANAGEGOODS_WINDOW_H

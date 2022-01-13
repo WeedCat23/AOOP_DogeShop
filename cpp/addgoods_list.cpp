@@ -1,19 +1,18 @@
-#include "header/addgoods_window.h"
-#include "ui_addgoods_window.h"
+#include "header/addgoods_list.h"
+#include "ui_addgoods_list.h"
 #include "header/loading_window.h"
 #include "header/csv.h"
 #include <QIntValidator>
 
 using namespace std;
 
-AddGoods_window::AddGoods_window(QWidget *parent) :
+AddGoods_list::AddGoods_list(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AddGoods_window)
+    ui(new Ui::AddGoods_list)
 {
     ui->setupUi(this);
 
-    page = 0;
-    row_cards = 8;
+    //col_cards = 20;
     Csv *csvObj = new Csv;
     all_card = csvObj->read_csv("../AOOP_DogeShop/src/cards.csv");
     sub_v = all_card;
@@ -27,83 +26,83 @@ AddGoods_window::AddGoods_window(QWidget *parent) :
         if(shop_v[i].state == "NEW")
             shop_v[i].state = " ";
 
-    ui->how_many->setText("第[" + QString::number(page + 1) +
-                          "]頁，全[" + QString::number(all_card.size()) + "]種商品");
+    ui->how_many->setText("全[" + QString::number(all_card.size()) + "]種商品");
     ui->shop_title->setText("DOGE SHOP - Release");
     ui->add->setStyleSheet("QPushButton{background-color:rgba(212,109,104,100%); color:white; border-radius:0px;}"
                            "QPushButton:hover{background-color:rgba(183,78,73,100%); color:white;}");
-    ui->next_page->setStyleSheet("QPushButton{background-color:rgba(61,61,61,100%); color:white; border-radius:0px;}"
-                                 "QPushButton:hover{background-color:rgba(80,80,80,100%); color:white;}");
-    ui->previous_page->setStyleSheet("QPushButton{background-color:rgba(61,61,61,100%); color:white; border-radius:0px;}"
-                                     "QPushButton:hover{background-color:rgba(80,80,80,100%); color:white;}");
 
-    card_grid_layout(row_cards, ui->up_gridLayout, 0);
-    card_grid_layout(row_cards, ui->down_gridLayout, 1);
+    card_grid_layout(ui->gridLayout);
 }
 
-AddGoods_window::AddGoods_window(int flag, QWidget *parent) :
+AddGoods_list::AddGoods_list(int flag, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AddGoods_window)
+    ui(new Ui::AddGoods_list)
 {
     if(flag == 0)
-        qDebug() << "construct for shop window";
+        qDebug() << "construct for shop list";
     else if(flag == 1)
-        qDebug() << "construct for manage window";
+        qDebug() << "construct for manage list";
 }
 
-void AddGoods_window::card_grid_layout(int q, QGridLayout *grid, int idx)
+void AddGoods_list::card_grid_layout(QGridLayout *grid)
 {
-    grid->setRowMinimumHeight(0, 180);
+    //Card *cardObj = new Card;
+    QTableWidget *tableWidget = new QTableWidget(all_card.size(),6);
+    tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    tableWidget->setSelectionMode(QAbstractItemView::NoSelection);
+    tableWidget->horizontalHeader()->hide();
+    tableWidget->verticalHeader()->hide();
+    tableWidget->setColumnWidth(0,300);
+    tableWidget->setColumnWidth(1,50);
+    tableWidget->setColumnWidth(2,100);
+    tableWidget->setColumnWidth(3,50);
+    tableWidget->setColumnWidth(4,100);
+    tableWidget->setColumnWidth(5,280);
+    grid->addWidget(tableWidget);
 
-    Card *cardObj = new Card;
-    for(int i = 0; i < q && (2*q*page + i + row_cards*idx) < (int)all_card.size(); i++)
+    for(int i = 0; i < (int)all_card.size(); i++)
     {
-        QLabel *pic = new QLabel;
-        cardObj->load_pic(all_card[2*q*page + i + row_cards*idx].url, *pic, 160);
-        grid->addWidget(pic, 0, i, Qt::AlignCenter);
-
         QLabel *name = new QLabel;
-        name->setText(QString::fromStdString(all_card[2*q*page + i + row_cards*idx].name));
-        name->setStyleSheet("border:2px solid; font:bold;");
-        grid->addWidget(name, 1, i, Qt::AlignCenter);
-
-        QLabel *type = new QLabel;
-        type->setText(QString::fromStdString(all_card[2*q*page + i + row_cards*idx].type));
-        type->setStyleSheet("font:bold;");
-        grid->addWidget(type, 2, i, Qt::AlignCenter);
+        name->setText(QString::fromStdString(all_card[i].name));
+        name->setAlignment(Qt::AlignCenter);
+        name->setMinimumWidth(300);
+        if(all_card[i].type == "monster")
+            name->setStyleSheet("QLabel{background-color:rgb(197, 152, 75); color:white; border:2px solid; font:bold;}");
+        else if(all_card[i].type == "magic")
+            name->setStyleSheet("QLabel{background-color:rgb(19, 147, 129); color:white; border:2px solid; font:bold;}");
+        else if(all_card[i].type == "trap")
+            name->setStyleSheet("QLabel{background-color:rgb(171, 29, 134); color:white; border:2px solid; font:bold;}");
+        tableWidget->setCellWidget(i, 0, name);
 
         QLabel *num = new QLabel("數量"), *price = new QLabel("價格");
-        num->setAlignment(Qt::AlignRight);
-        price->setAlignment(Qt::AlignRight);
+        num->setStyleSheet("border:2px solid; font:bold;");
+        price->setStyleSheet("border:2px solid; font:bold;");
+        num->setAlignment(Qt::AlignCenter);
+        price->setAlignment(Qt::AlignCenter);
         QLineEdit *num_in = new QLineEdit, *price_in = new QLineEdit;
+        num_in->setMinimumWidth(100);
+        price_in->setMinimumWidth(100);
         num_in->setValidator(new QIntValidator(0, 1000, this));
         price_in->setValidator(new QIntValidator(0, 10000, this));
         num_in_v.push_back(num_in);
         price_in_v.push_back(price_in);
-        QHBoxLayout *hBoxLayout = new QHBoxLayout;
-        hBoxLayout->addWidget(num, Qt::AlignLeft);
-        hBoxLayout->addWidget(num_in, Qt::AlignLeft);
-        hBoxLayout->addWidget(price, Qt::AlignLeft);
-        hBoxLayout->addWidget(price_in, Qt::AlignLeft);
-        hBoxLayout->setStretch(0, 2);
-        hBoxLayout->setStretch(2, 2);
-        hBoxLayout->setStretch(1, 3);
-        hBoxLayout->setStretch(3, 3);
-        hBoxLayout->setSpacing(2);
-        grid->addLayout(hBoxLayout, 3, i, Qt::AlignCenter);
+        tableWidget->setCellWidget(i, 1, num);
+        tableWidget->setCellWidget(i, 2, num_in);
+        tableWidget->setCellWidget(i, 3, price);
+        tableWidget->setCellWidget(i, 4, price_in);
 
         QPushButton *button = new QPushButton(" 點此查看卡片詳細 ");
+        button->setMinimumWidth(300);
         button->setAutoDefault(false);
         button->setStyleSheet("QPushButton{background-color:rgba(217,182,80,100%);\
                               color:white; border-radius:0px; font:bold;}"
                               "QPushButton:hover{background-color:rgba(255,220,110,100%); color:rgb(61,61,61);}");
-        connect(button, &QPushButton::clicked, this, [=](){all_card[2*q*page + i + row_cards*idx].detail();});
-        grid->addWidget(button, 4, i, Qt::AlignCenter);
+        connect(button, &QPushButton::clicked, this, [=](){all_card[i].detail();});
+        tableWidget->setCellWidget(i, 5, button);
     }
-    delete cardObj;
 }
 
-void AddGoods_window::clear_layout(QLayout* layout)
+void AddGoods_list::clear_layout(QLayout* layout)
 {
     QLayoutItem *item;
     while((item = layout->takeAt(0)))
@@ -121,7 +120,7 @@ void AddGoods_window::clear_layout(QLayout* layout)
     }
 }
 
-void AddGoods_window::clear_lineEdit_v()
+void AddGoods_list::clear_lineEdit_v()
 {
     while(this->num_in_v.size())
         num_in_v.pop_back();
@@ -129,12 +128,12 @@ void AddGoods_window::clear_lineEdit_v()
         price_in_v.pop_back();
 }
 
-AddGoods_window::~AddGoods_window()
+AddGoods_list::~AddGoods_list()
 {
     delete ui;
 }
 
-void AddGoods_window::reject()
+void AddGoods_list::reject()
 {
     //刪掉原csv後重寫
     remove("../AOOP_DogeShop/src/shop.csv");
@@ -146,49 +145,7 @@ void AddGoods_window::reject()
     QDialog::reject();
 }
 
-void AddGoods_window::on_next_page_clicked()
-{
-    page++;
-    if(page > (int)(all_card.size()-0.5) / (2*row_cards))
-        page = 0;
-    ui->how_many->setText("第[" + QString::number(page + 1) +
-                          "]頁，全[" + QString::number(all_card.size()) + "]種商品");
-
-    Loading_window *load_window = new Loading_window(this);
-    load_window->setWindowTitle("Loading...");
-    load_window->show();
-
-    clear_lineEdit_v();
-    clear_layout(ui->up_gridLayout);
-    clear_layout(ui->down_gridLayout);
-    card_grid_layout(row_cards, ui->up_gridLayout, 0);
-    card_grid_layout(row_cards, ui->down_gridLayout, 1);
-
-    delete load_window;
-}
-
-void AddGoods_window::on_previous_page_clicked()
-{
-    page--;
-    if(page < 0)
-        page = (int)(all_card.size()-0.5) / (2*row_cards);
-    ui->how_many->setText("第[" + QString::number(page + 1) +
-                          "]頁，全[" + QString::number(all_card.size()) + "]種商品");
-
-    Loading_window *load_window = new Loading_window(this);
-    load_window->setWindowTitle("Loading...");
-    load_window->show();
-
-    clear_lineEdit_v();
-    clear_layout(ui->up_gridLayout);
-    clear_layout(ui->down_gridLayout);
-    card_grid_layout(row_cards, ui->up_gridLayout, 0);
-    card_grid_layout(row_cards, ui->down_gridLayout, 1);
-
-    delete load_window;
-}
-
-void AddGoods_window::on_add_clicked()
+void AddGoods_list::on_add_clicked()
 {
     if(ui->lineEdit->hasFocus())        //在輸入搜尋文字時enter
     {
@@ -201,12 +158,10 @@ void AddGoods_window::on_add_clicked()
 
     for(int i = 0; i < (int)num_in_v.size(); i++)
     {
-        int idx = 2*row_cards*page + i;
-
         if(num_in_v[i]->text() != "" && price_in_v[i]->text() != "")
         {
             temp = new Card_in_shop;
-            temp->set_data(all_card[idx], num_in_v[i]->text().toInt(), price_in_v[i]->text().toInt());
+            temp->set_data(all_card[i], num_in_v[i]->text().toInt(), price_in_v[i]->text().toInt());
             shop_v.push_back(*temp);
             count++;
         }
@@ -228,8 +183,7 @@ void AddGoods_window::on_add_clicked()
     }
     load_window->show();
 }
-
-void AddGoods_window::on_sort_box_currentTextChanged(const QString &arg1)
+void AddGoods_list::on_sort_box_currentTextChanged(const QString &arg1)
 {
     while(all_card.size())
         all_card.pop_back();
@@ -255,51 +209,21 @@ void AddGoods_window::on_sort_box_currentTextChanged(const QString &arg1)
     else
         all_card = sub_v;
 
-    page = 0;
-    ui->how_many->setText("第[" + QString::number(page + 1) +
-                          "]頁，全[" + QString::number(all_card.size()) + "]種商品");
+    ui->how_many->setText("全[" + QString::number(all_card.size()) + "]種商品");
 
     Loading_window *load_window = new Loading_window(this);
     load_window->setWindowTitle("Loading...");
     load_window->show();
 
     clear_lineEdit_v();
-    clear_layout(ui->up_gridLayout);
-    clear_layout(ui->down_gridLayout);
-    card_grid_layout(row_cards, ui->up_gridLayout, 0);
-    card_grid_layout(row_cards, ui->down_gridLayout, 1);
+    clear_layout(ui->gridLayout);
+    card_grid_layout(ui->gridLayout);
 
     delete load_window;
 }
 
 
-void AddGoods_window::on_rownum_box_currentTextChanged(const QString &arg1)
-{
-    if(arg1 == "16/page")
-        row_cards = 8;
-    else if(arg1 == "12/page")
-        row_cards = 6;
-    else if(arg1 == "8/page")
-        row_cards = 4;
-
-    page = 0;
-    ui->how_many->setText("第[" + QString::number(page + 1) +
-                          "]頁，全[" + QString::number(all_card.size()) + "]種商品");
-
-    Loading_window *load_window = new Loading_window(this);
-    load_window->setWindowTitle("Loading...");
-    load_window->show();
-
-    clear_lineEdit_v();
-    clear_layout(ui->up_gridLayout);
-    clear_layout(ui->down_gridLayout);
-    card_grid_layout(row_cards, ui->up_gridLayout, 0);
-    card_grid_layout(row_cards, ui->down_gridLayout, 1);
-
-    delete load_window;
-}
-
-void AddGoods_window::on_search_clicked()
+void AddGoods_list::on_search_clicked()
 {
     if(ui->lineEdit->text() == "")      //不輸入就滾
         return;
@@ -342,9 +266,6 @@ void AddGoods_window::on_search_clicked()
     if(input != "")
         words.push_back(input);     //把最後剩下的字串加入
 
-    for (string &str : words)
-        qDebug() << QString::fromStdString(str);
-
     int max_found = 0;      //一張卡被找到最多的指定字串量
     vector<int> count(all_card.size(),0);       //每張卡被找到多少指定字串
     for(int i = 0; i < (int)words.size(); i++)  //對每個指定字串搜尋所有卡片
@@ -366,22 +287,18 @@ void AddGoods_window::on_search_clicked()
         all_card.pop_back();
     all_card = temp;
 
-    page = 0;
     string search_show = "搜尋:";
     for(int i = 0; i < (int)words.size(); i++)
         search_show += " 「" + words[i] + "」";
-    ui->how_many->setText(QString::fromStdString(search_show) + ", 第[" + QString::number(page + 1) +
-                          "]頁，全[" + QString::number(all_card.size()) + "]種商品");
+    ui->how_many->setText(QString::fromStdString(search_show) + ", 全[" + QString::number(all_card.size()) + "]種商品");
 
     Loading_window *load_window = new Loading_window(this);
     load_window->setWindowTitle("Loading...");
     load_window->show();
 
     clear_lineEdit_v();
-    clear_layout(ui->up_gridLayout);
-    clear_layout(ui->down_gridLayout);
-    card_grid_layout(row_cards, ui->up_gridLayout, 0);
-    card_grid_layout(row_cards, ui->down_gridLayout, 1);
+    clear_layout(ui->gridLayout);
+    card_grid_layout(ui->gridLayout);
 
     delete load_window;
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddGoods_window</class>
- <widget class="QDialog" name="AddGoods_window">
+ <class>Manage_list</class>
+ <widget class="QDialog" name="Manage_list">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -34,7 +34,7 @@
     </font>
    </property>
    <property name="text">
-    <string>輸入數量與價格後一併上架</string>
+    <string>輸入數量與價格後一併更改</string>
    </property>
   </widget>
   <widget class="QLabel" name="shop_title">
@@ -89,74 +89,6 @@ background-color: rgb(61, 61, 61);</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="gridLayoutWidget_4">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>150</y>
-     <width>941</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="up_gridLayout"/>
-  </widget>
-  <widget class="QWidget" name="gridLayoutWidget_5">
-   <property name="geometry">
-    <rect>
-     <x>11</x>
-     <y>421</y>
-     <width>941</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="down_gridLayout"/>
-  </widget>
-  <widget class="QPushButton" name="previous_page">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>50</y>
-     <width>90</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>微軟正黑體</family>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>上一頁</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="next_page">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>50</y>
-     <width>90</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>微軟正黑體</family>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>下一頁</string>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QComboBox" name="sort_box">
    <property name="geometry">
     <rect>
@@ -196,47 +128,48 @@ background-color: rgb(61, 61, 61);</string>
      <string>trap</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>new</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>hot</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>cut</string>
+    </property>
+   </item>
   </widget>
-  <widget class="QComboBox" name="rownum_box">
+  <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
     <rect>
-     <x>860</x>
-     <y>120</y>
-     <width>90</width>
-     <height>20</height>
+     <x>20</x>
+     <y>129</y>
+     <width>920</width>
+     <height>561</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Agency FB</family>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_5">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>140</y>
+     <width>901</width>
+     <height>541</height>
+    </rect>
    </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <item>
-    <property name="text">
-     <string>16/page</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>12/page</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>8/page</string>
-    </property>
-   </item>
+   <layout class="QGridLayout" name="gridLayout"/>
   </widget>
   <widget class="QPushButton" name="search">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>120</y>
+     <x>790</x>
+     <y>90</y>
      <width>50</width>
      <height>20</height>
     </rect>
@@ -259,9 +192,9 @@ background-color: rgb(61, 61, 61);</string>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>120</y>
-     <width>340</width>
+     <x>790</x>
+     <y>60</y>
+     <width>160</width>
      <height>20</height>
     </rect>
    </property>

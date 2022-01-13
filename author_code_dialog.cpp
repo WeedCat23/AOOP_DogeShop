@@ -10,7 +10,7 @@ Author_code_dialog::Author_code_dialog(Manager* m,QWidget *parent) :
     qDebug()<<"ok here";
     ui->lineedit_newcode->setInputMask("9999");
     //ui->lineedit_newcode->setMaxLength(4);
-
+    ui->lineedit_newcode->setFocus();
     update_lcd_display();
 }
 Author_code_dialog::~Author_code_dialog()

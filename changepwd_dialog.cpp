@@ -18,6 +18,10 @@ ChangePwd_Dialog::ChangePwd_Dialog(QWidget *parent) :
     ui->lineEdit_newPwd1->setEchoMode(QLineEdit::Password);
     ui->lineEdit_newPwd2->setEchoMode(QLineEdit::Password);
     ui->lineEdit_passConfirm->setEchoMode(QLineEdit::Password);
+    ui->lineEdit_passConfirm->setFocus();
+    ui->lineEdit_passConfirm->setTabOrder(ui->lineEdit_passConfirm,ui->lineEdit_newPwd1);
+    ui->lineEdit_passConfirm->setTabOrder(ui->lineEdit_newPwd1,ui->lineEdit_newPwd2);
+    ui->lineEdit_passConfirm->setTabOrder(ui->lineEdit_newPwd2,ui->lineEdit_passConfirm);
 }
 ChangePwd_Dialog::~ChangePwd_Dialog()
 {

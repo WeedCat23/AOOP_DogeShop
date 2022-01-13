@@ -58,3 +58,8 @@ void Card_in_bag::set_data(Card_in_shop x, int num)
     this->num = num;
     this->star = false;
 }
+
+void Card_in_bag::change_star()
+{
+    star = !star;
+}

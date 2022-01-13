@@ -13,9 +13,12 @@ void Customer::addToBag(Card_in_bag *ptr)
 {
     bag.addCard(ptr);
 }
-void Customer::earnPoint()
+void Customer::earnPoint(double a)
 {
-    money.addPoint(((rand()+1.)/RAND_MAX)*50);
+    if(a<0)
+        money.addPoint(((rand()+1.)/RAND_MAX)*50);
+    else
+        money.addPoint(a);
 }
 void Customer::exchangePoint(int share)
 {

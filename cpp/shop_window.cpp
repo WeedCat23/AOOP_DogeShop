@@ -50,45 +50,7 @@ void Shop_window::card_grid_layout(int q, QGridLayout *grid, int idx)
         name->setStyleSheet("border:2px solid; font:bold;");
         grid->addWidget(name, 1, i, Qt::AlignCenter);
 
-        QHBoxLayout *hBoxLayout = new QHBoxLayout;
-        QLabel *type = new QLabel;
-        type->setText(QString::fromStdString(shop_v[2*q*page + i + row_cards*idx].type));
-        type->setStyleSheet("font:bold;");
-        type->setAlignment(Qt::AlignCenter);
-        hBoxLayout->addWidget(type, 4, Qt::AlignCenter);
-
-        if(shop_v[2*q*page + i + row_cards*idx].state != " ")
-        {
-            QLabel *state = new QLabel(shop_v[2*q*page + i + row_cards*idx].state);
-            if(state->text() == "NEW") state->setStyleSheet("font:bold; border:1px solid green; color:green; font-size:8px;");
-            else if(state->text() == "HOT") state->setStyleSheet("font:bold; border:1px solid red; color:red; font-size:8px;");
-            else if(state->text() == "CUT") state->setStyleSheet("font:bold; border:1px solid blue; color:blue; font-size:8px;");
-            state->setAlignment(Qt::AlignCenter);
-            hBoxLayout->addWidget(state, 1, Qt::AlignCenter);
-        }
-        grid->addLayout(hBoxLayout, 2, i, Qt::AlignCenter);
-
-        QLabel *num = new QLabel("庫存" + QString::number(shop_v[2*q*page + i + row_cards*idx].num));
-        QLabel *price = new QLabel("價格" + QString::number(shop_v[2*q*page + i + row_cards*idx].price));
-        num->setAlignment(Qt::AlignCenter);
-        price->setAlignment(Qt::AlignCenter);
-        num->setStyleSheet("font:bold; color:red");
-        price->setStyleSheet("font:bold; color:red");
-
-        QLabel *num2 = new QLabel("輸入數量");
-        QLineEdit *num_in = new QLineEdit;
-        num_in->setValidator(new QIntValidator(0, shop_v[2*q*page + i + row_cards*idx].num, this));
-        num_in->disconnect();
-        //connect(num_in1, &QLineEdit::returnPressed, this, [=](){this->on_add_clicked(); qDebug() << "hi4";});
-        num_in_v.push_back(num_in);
-
-        QGridLayout *subLayout = new QGridLayout;
-        subLayout->addWidget(num, 0, 0, Qt::AlignCenter);
-        subLayout->addWidget(price, 0, 1, Qt::AlignCenter);
-        subLayout->addWidget(num2, 1, 0, Qt::AlignLeft);
-        subLayout->addWidget(num_in, 1, 1, Qt::AlignLeft);
-        subLayout->setSpacing(2);
-        grid->addLayout(subLayout, 3, i, Qt::AlignCenter);
+        sub_layout(grid, idx, i);
 
         QPushButton *button = new QPushButton(" 點此查看卡片詳細 ");
         button->setAutoDefault(false);
@@ -99,6 +61,51 @@ void Shop_window::card_grid_layout(int q, QGridLayout *grid, int idx)
         grid->addWidget(button, 4, i, Qt::AlignCenter);
     }
     delete cardObj;
+}
+
+
+void Shop_window::sub_layout(QGridLayout *grid, int idx, int i)
+{
+    int q = row_cards;
+
+    QHBoxLayout *hBoxLayout = new QHBoxLayout;
+    QLabel *type = new QLabel;
+    type->setText(QString::fromStdString(shop_v[2*q*page + i + q*idx].type));       //印卡片種類
+    type->setStyleSheet("font:bold;");
+    type->setAlignment(Qt::AlignCenter);
+    hBoxLayout->addWidget(type, 4, Qt::AlignCenter);        //加到hlayout, stretch = 4
+
+    if(shop_v[2*q*page + i + q*idx].state != " ")       //判斷有沒有HOT那些label
+    {
+        QLabel *state = new QLabel(shop_v[2*q*page + i + q*idx].state);
+        if(state->text() == "NEW") state->setStyleSheet("font:bold; border:1px solid green; color:green; font-size:8px;");
+        else if(state->text() == "HOT") state->setStyleSheet("font:bold; border:1px solid red; color:red; font-size:8px;");
+        else if(state->text() == "CUT") state->setStyleSheet("font:bold; border:1px solid blue; color:blue; font-size:8px;");
+        state->setAlignment(Qt::AlignCenter);
+        hBoxLayout->addWidget(state, 1, Qt::AlignCenter);   //有就加到hlayout, stretch = 1
+    }
+    grid->addLayout(hBoxLayout, 2, i, Qt::AlignCenter);     //把hlayout加入grid的第i行第2列(卡名下面)
+
+
+    QLabel *num = new QLabel("庫存" + QString::number(shop_v[2*q*page + i + q*idx].num));
+    QLabel *price = new QLabel("價格" + QString::number(shop_v[2*q*page + i + q*idx].price));
+    num->setAlignment(Qt::AlignCenter);
+    price->setAlignment(Qt::AlignCenter);
+    num->setStyleSheet("font:bold; color:red");
+    price->setStyleSheet("font:bold; color:red");
+
+    QLabel *num2 = new QLabel("輸入數量");
+    QLineEdit *num_in = new QLineEdit;
+    num_in->setValidator(new QIntValidator(0, shop_v[2*q*page + i + row_cards*idx].num, this));
+    num_in_v.push_back(num_in);
+
+    QGridLayout *subLayout = new QGridLayout;
+    subLayout->addWidget(num, 0, 0, Qt::AlignCenter);
+    subLayout->addWidget(price, 0, 1, Qt::AlignCenter);
+    subLayout->addWidget(num2, 1, 0, Qt::AlignLeft);
+    subLayout->addWidget(num_in, 1, 1, Qt::AlignLeft);
+    subLayout->setSpacing(2);
+    grid->addLayout(subLayout, 3, i, Qt::AlignCenter);      //把sublayout加入grid的第i行第3列
 }
 
 Shop_window::~Shop_window()
@@ -122,7 +129,7 @@ void Shop_window::reject()
 void Shop_window::on_next_page_clicked()
 {
     page++;
-    if(page > (int)shop_v.size() / (2*row_cards))
+    if(page > (int)(shop_v.size()-0.5) / (2*row_cards))
         page = 0;
     ui->how_many->setText("第[" + QString::number(page + 1) +
                           "]頁，全[" + QString::number(shop_v.size()) + "]種商品");
@@ -146,7 +153,7 @@ void Shop_window::on_previous_page_clicked()
 {
     page--;
     if(page < 0)
-        page = (int)shop_v.size() / (2*row_cards);
+        page = (int)(shop_v.size()-0.5) / (2*row_cards);
     ui->how_many->setText("第[" + QString::number(page + 1) +
                           "]頁，全[" + QString::number(shop_v.size()) + "]種商品");
 
@@ -165,11 +172,19 @@ void Shop_window::on_previous_page_clicked()
 
 void Shop_window::on_add_clicked()
 {
+    if(ui->lineEdit->hasFocus())        //在輸入搜尋文字時enter
+    {
+        on_search_clicked();            //就跳過去，不是這
+        return;
+    }
+
     int count = 0;
 
     for(int i = 0; i < (int)num_in_v.size(); i++)
     {
         int idx = 2*row_cards*page + i;
+        bool flag = 0;
+
         if(num_in_v[i]->text() != "" && num_in_v[i]->text().toInt() <= shop_v[idx].num)
         {
             if(c->purchase(shop_v[idx].price * num_in_v[i]->text().toInt()))
@@ -177,6 +192,8 @@ void Shop_window::on_add_clicked()
                 qDebug() << "buy" << QString::fromStdString(shop_v[idx].name) << num_in_v[i]->text();
                 shop_v[idx].num -= num_in_v[i]->text().toInt();
                 count++;
+                flag = 1;
+
                 qDebug() << "now i have:" << c->get_money_cash();
                 ui->money->setText( QString::number(c->get_money_cash()) + "$");
 
@@ -188,7 +205,50 @@ void Shop_window::on_add_clicked()
             else
                 qDebug() << "buy" << QString::fromStdString(shop_v[idx].name) << "failed";
         }
-        num_in_v[i]->clear();
+
+
+        num_in_v[i]->clear();       //清出輸入的東西
+
+        if(flag)    //有變動數量或價格
+        {
+            QLayoutItem *item;
+            if(i < row_cards)       //改動上面的grid
+            {
+                //保留被改動位置以外的line edits
+                vector<QLineEdit *> nums_before(num_in_v.begin(), num_in_v.begin() + i), nums_after(num_in_v.begin() + i + 1, num_in_v.end());
+                clear_lineEdit_v();
+
+                item = ui->up_gridLayout_shop->itemAtPosition(2, i);     //刪除第i行第二列的hlayout
+                clear_layout(item->layout());
+                delete item->layout();
+                item = ui->up_gridLayout_shop->itemAtPosition(3, i);     //刪除第i行第三列的subgrid
+                clear_layout(item->layout());
+                delete item->layout();
+                sub_layout(ui->up_gridLayout_shop, 0, i);        //重新布置剛剛被刪掉的東西
+
+                //把line edits組合回去
+                num_in_v.insert(num_in_v.begin(), nums_before.begin(), nums_before.end());
+                num_in_v.insert(num_in_v.end(), nums_after.begin(), nums_after.end());
+            }
+            else        //改動下面的grid
+            {
+                //保留被改動位置以外的line edits
+                vector<QLineEdit *> nums_before(num_in_v.begin(), num_in_v.begin() + i), nums_after(num_in_v.begin() + i + 1, num_in_v.end());
+                clear_lineEdit_v();
+
+                item = ui->down_gridLayout_shop->itemAtPosition(2, i - row_cards);       //刪除第i - row_cards行第二列的hlayout
+                clear_layout(item->layout());
+                delete item->layout();
+                item = ui->down_gridLayout_shop->itemAtPosition(3, i - row_cards);       //刪除第i - row_cards行第三列的subgrid
+                clear_layout(item->layout());
+                delete item->layout();
+                sub_layout(ui->down_gridLayout_shop, 1, i - row_cards);      //重新布置剛剛被刪掉的東西
+
+                //把line edits組合回去
+                num_in_v.insert(num_in_v.begin(), nums_before.begin(), nums_before.end());
+                num_in_v.insert(num_in_v.end(), nums_after.begin(), nums_after.end());
+            }
+        }
     }
 
 
@@ -211,22 +271,15 @@ void Shop_window::on_add_clicked()
 
         Loading_window *load_window = new Loading_window(this);
         load_window->setWindowTitle("購買成功");
-        load_window->set_text("SUCCESS, UPDATE SHOP");
+        load_window->set_text("SUCCESS");
         load_window->show();
-
-        clear_lineEdit_v();
-        clear_layout(ui->up_gridLayout_shop);
-        clear_layout(ui->down_gridLayout_shop);
-        card_grid_layout(row_cards, ui->up_gridLayout_shop, 0);
-        card_grid_layout(row_cards, ui->down_gridLayout_shop, 1);
-
-        delete load_window;
     }
     else
     {
         Loading_window *load_window = new Loading_window(this);
         load_window->setWindowTitle("購買失敗");
         load_window->set_text("FAILED");
+        load_window->show();
     }
 }
 
@@ -319,3 +372,112 @@ void Shop_window::on_rownum_box_currentTextChanged(const QString &arg1)
 
     delete load_window;
 }
+
+void Shop_window::on_search_clicked()
+{
+    if(ui->lineEdit->text() == "")      //不輸入就滾
+        return;
+
+    while(shop_v.size())
+        shop_v.pop_back();
+    QString arg1 = ui->sort_box->currentText();     //按sort box重整card vector
+    if(arg1 == "monster")
+    {
+        for(int i = 0; i < (int)sub_v.size(); i++)
+            if(sub_v[i].type == "monster")
+                shop_v.push_back(sub_v[i]);
+    }
+    else if(arg1 == "magic")
+    {
+        for(int i = 0; i < (int)sub_v.size(); i++)
+            if(sub_v[i].type == "magic")
+                shop_v.push_back(sub_v[i]);
+    }
+    else if(arg1 == "trap")
+    {
+        for(int i = 0; i < (int)sub_v.size(); i++)
+            if(sub_v[i].type == "trap")
+                shop_v.push_back(sub_v[i]);
+    }
+    else if(arg1 == "new")
+    {
+
+        for(int i = 0; i < (int)sub_v.size(); i++)
+            if(sub_v[i].state == "NEW")
+                shop_v.push_back(sub_v[i]);
+    }
+    else if(arg1 == "hot")
+    {
+
+        for(int i = 0; i < (int)sub_v.size(); i++)
+            if(sub_v[i].state == "HOT")
+                shop_v.push_back(sub_v[i]);
+    }
+    else if(arg1 == "cut")
+    {
+
+        for(int i = 0; i < (int)sub_v.size(); i++)
+            if(sub_v[i].state == "CUT")
+                shop_v.push_back(sub_v[i]);
+    }
+    else
+        shop_v = sub_v;
+
+    string input = ui->lineEdit->text().toStdString();
+    ui->lineEdit->clear();
+    vector<string> words;
+
+    size_t pos = 0;
+    while ((pos = input.find(" ")) != string::npos)     //空格分割
+    {
+        if(input.substr(0, pos) != "")
+            words.push_back(input.substr(0, pos));
+        input.erase(0, pos + 1);
+    }
+    if(input != "")
+        words.push_back(input);     //把最後剩下的字串加入
+
+    for (string &str : words)
+        qDebug() << QString::fromStdString(str);
+
+    int max_found = 0;      //一張卡被找到最多的指定字串量
+    vector<int> count(shop_v.size(),0);       //每張卡被找到多少指定字串
+    for(int i = 0; i < (int)words.size(); i++)  //對每個指定字串搜尋所有卡片
+        for(int j = 0; j < (int)shop_v.size(); j++)
+            if(shop_v[j].name.find(words[i]) != string::npos)
+            {
+                count[j]++;
+                if(count[j] > max_found)
+                    max_found = count[j];
+            }
+
+    vector<Card_in_shop> temp;      //儲存包含指定字串卡片的vector
+    for(int i = max_found; i > 0; i--)      //被找到最多字串的優先加入
+        for(int j = 0; j < (int)shop_v.size(); j++)
+            if(count[j] == i)
+                temp.push_back(shop_v[j]);
+
+    while(shop_v.size())
+        shop_v.pop_back();
+    shop_v = temp;
+
+    page = 0;
+    string search_show = "搜尋:";
+    for(int i = 0; i < (int)words.size(); i++)
+        search_show += " 「" + words[i] + "」";
+    ui->how_many->setText(QString::fromStdString(search_show) + ", 第[" + QString::number(page + 1) +
+                          "]頁，全[" + QString::number(shop_v.size()) + "]種商品");
+
+    Loading_window *load_window = new Loading_window(this);
+    load_window->setWindowTitle("Loading...");
+    load_window->show();
+
+    clear_lineEdit_v();
+    clear_layout(ui->up_gridLayout_shop);
+    clear_layout(ui->down_gridLayout_shop);
+    card_grid_layout(row_cards, ui->up_gridLayout_shop, 0);
+    card_grid_layout(row_cards, ui->down_gridLayout_shop, 1);
+
+    delete load_window;
+}
+

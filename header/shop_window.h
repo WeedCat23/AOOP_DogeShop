@@ -37,8 +37,11 @@ private:
     void on_add_clicked() override;
     void on_sort_box_currentTextChanged(const QString &arg1) override;
     void on_rownum_box_currentTextChanged(const QString &arg1) override;
+    void on_search_clicked() override;
 
     void reject() override;
+
+    void sub_layout(QGridLayout *grid, int idx, int i);
 };
 
 #endif // SHOP_WINDOW_H

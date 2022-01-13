@@ -31,11 +31,19 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="font">
+       <font>
+        <family>Agency FB</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="frameShape">
        <enum>QFrame::WinPanel</enum>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="emptypage"/>
       <widget class="QWidget" name="page">
@@ -52,6 +60,8 @@
          <font>
           <family>Agency FB</family>
           <pointsize>40</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -60,6 +70,19 @@ HORNY DOGE SHOP !!</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="github_butt">
+        <property name="geometry">
+         <rect>
+          <x>847</x>
+          <y>460</y>
+          <width>80</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>
@@ -77,6 +100,8 @@ HORNY DOGE SHOP !!</string>
          <font>
           <family>Agency FB</family>
           <pointsize>26</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
           <underline>true</underline>
          </font>
         </property>
@@ -97,6 +122,8 @@ HORNY DOGE SHOP !!</string>
          <font>
           <family>Agency FB</family>
           <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="title">
@@ -115,6 +142,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
         </widget>
@@ -154,6 +183,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="currentText">
@@ -234,6 +265,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -253,6 +286,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -295,6 +330,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <item>
@@ -327,6 +364,17 @@ HORNY DOGE SHOP !!</string>
            <height>21</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <family>Agency FB</family>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <italic>true</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
          <property name="text">
           <string>Plz update before leaving</string>
          </property>
@@ -345,6 +393,8 @@ HORNY DOGE SHOP !!</string>
          <font>
           <family>Agency FB</family>
           <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="title">
@@ -405,6 +455,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -424,6 +476,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -444,6 +498,8 @@ HORNY DOGE SHOP !!</string>
          <font>
           <family>Segoe UI</family>
           <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -465,6 +521,8 @@ HORNY DOGE SHOP !!</string>
          <font>
           <family>MV Boli</family>
           <pointsize>9</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="layoutDirection">
@@ -531,6 +589,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>15</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="layoutDirection">
@@ -571,6 +631,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Agency FB</family>
            <pointsize>15</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -593,6 +655,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Segoe UI</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -612,6 +676,8 @@ HORNY DOGE SHOP !!</string>
           <font>
            <family>Segoe UI</family>
            <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="text">
@@ -632,6 +698,8 @@ HORNY DOGE SHOP !!</string>
          <font>
           <family>Agency FB</family>
           <pointsize>26</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
           <underline>true</underline>
          </font>
         </property>
@@ -654,6 +722,8 @@ HORNY DOGE SHOP !!</string>
          <font>
           <family>Agency FB</family>
           <pointsize>26</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
           <underline>true</underline>
          </font>
         </property>
@@ -661,23 +731,13 @@ HORNY DOGE SHOP !!</string>
          <string>My Bag :</string>
         </property>
        </widget>
-       <widget class="QListWidget" name="listWidget">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>30</y>
-          <width>601</width>
-          <height>481</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QWidget" name="gridLayoutWidget">
         <property name="geometry">
          <rect>
           <x>280</x>
-          <y>60</y>
-          <width>601</width>
-          <height>451</height>
+          <y>90</y>
+          <width>631</width>
+          <height>391</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="bag_gridLayout">
@@ -689,9 +749,9 @@ HORNY DOGE SHOP !!</string>
        <widget class="QWidget" name="horizontalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>279</x>
-          <y>29</y>
-          <width>601</width>
+          <x>280</x>
+          <y>60</y>
+          <width>633</width>
           <height>31</height>
          </rect>
         </property>
@@ -699,8 +759,17 @@ HORNY DOGE SHOP !!</string>
          <property name="spacing">
           <number>0</number>
          </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QLabel" name="label_3">
+           <property name="minimumSize">
+            <size>
+             <width>242</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <family>微軟正黑體</family>
@@ -711,6 +780,7 @@ HORNY DOGE SHOP !!</string>
            </property>
            <property name="styleSheet">
             <string notr="true">border-color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);
 border:2px solid;</string>
            </property>
            <property name="text">
@@ -725,7 +795,7 @@ border:2px solid;</string>
           <widget class="QLabel" name="label_2">
            <property name="minimumSize">
             <size>
-             <width>117</width>
+             <width>118</width>
              <height>0</height>
             </size>
            </property>
@@ -745,6 +815,7 @@ border:2px solid;</string>
            </property>
            <property name="styleSheet">
             <string notr="true">border-color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);
 border:2px solid;</string>
            </property>
            <property name="text">
@@ -757,6 +828,12 @@ border:2px solid;</string>
          </item>
          <item>
           <widget class="QLabel" name="label">
+           <property name="minimumSize">
+            <size>
+             <width>240</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <family>微軟正黑體</family>
@@ -767,6 +844,7 @@ border:2px solid;</string>
            </property>
            <property name="styleSheet">
             <string notr="true">border-color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);
 border:2px solid;</string>
            </property>
            <property name="text">
@@ -777,23 +855,336 @@ border:2px solid;</string>
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <family>微軟正黑體</family>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-color: rgb(0, 0, 0);
+background-color: rgb(138, 138, 138);
+border:2px solid;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
-      </widget>
-      <widget class="QWidget" name="page_5">
-       <widget class="QTableWidget" name="tableWidget">
+       <widget class="PieChartWidget" name="piechart" native="true">
         <property name="geometry">
          <rect>
-          <x>320</x>
-          <y>90</y>
-          <width>501</width>
-          <height>371</height>
+          <x>20</x>
+          <y>200</y>
+          <width>240</width>
+          <height>240</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_piechart">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>160</y>
+          <width>161</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="font">
          <font>
           <family>Agency FB</family>
-          <pointsize>15</pointsize>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Card Type Distribute Table :</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>440</y>
+          <width>257</width>
+          <height>74</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="title">
+         <string>setting</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QRadioButton" name="radioButton">
+           <property name="font">
+            <font>
+             <family>Agency FB</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>count only unique</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_2">
+           <property name="font">
+            <font>
+             <family>Agency FB</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>count every card</string>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="btn_delete_allcard">
+        <property name="geometry">
+         <rect>
+          <x>732</x>
+          <y>485</y>
+          <width>171</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dangerous&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Delete All Cards In Bag</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>kill_all.png</normaloff>kill_all.png</iconset>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBoxsort">
+        <property name="geometry">
+         <rect>
+          <x>604</x>
+          <y>25</y>
+          <width>171</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>9</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Oldest(default)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Newest</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Longest Name</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Shortest Name</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Most</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Least</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Type(monster&gt;magic&gt;trap)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>shuffle</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>20</y>
+          <width>55</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Sort by:</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox_filter">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>25</y>
+          <width>165</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>9</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>All(default)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>monster</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>magic</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>trap</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>star</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>no star</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>20</y>
+          <width>55</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Filter:</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>810</x>
+          <y>20</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="text">
+         <string>Apply</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_5">
+       <widget class="QTableWidget" name="c_s_table">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>30</y>
+          <width>640</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>16</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="verticalScrollBarPolicy">
@@ -801,6 +1192,12 @@ border:2px solid;</string>
         </property>
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="autoScrollMargin">
+         <number>14</number>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
         </property>
         <property name="showGrid">
          <bool>true</bool>
@@ -817,9 +1214,6 @@ border:2px solid;</string>
         <property name="cornerButtonEnabled">
          <bool>true</bool>
         </property>
-        <attribute name="horizontalHeaderVisible">
-         <bool>false</bool>
-        </attribute>
         <attribute name="horizontalHeaderCascadingSectionResizes">
          <bool>false</bool>
         </attribute>
@@ -827,51 +1221,71 @@ border:2px solid;</string>
          <number>40</number>
         </attribute>
         <attribute name="horizontalHeaderDefaultSectionSize">
-         <number>160</number>
+         <number>150</number>
         </attribute>
         <attribute name="horizontalHeaderHighlightSections">
          <bool>true</bool>
         </attribute>
-        <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+        <attribute name="verticalHeaderCascadingSectionResizes">
          <bool>true</bool>
         </attribute>
-        <row>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>3</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </row>
+        <attribute name="verticalHeaderMinimumSectionSize">
+         <number>40</number>
+        </attribute>
+        <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
         <column>
          <property name="text">
           <string>ID</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Agency FB</family>
+           <pointsize>16</pointsize>
+          </font>
          </property>
         </column>
         <column>
          <property name="text">
           <string>username</string>
          </property>
+         <property name="font">
+          <font>
+           <family>Agency FB</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
         </column>
         <column>
          <property name="text">
           <string>cellphone</string>
          </property>
+         <property name="font">
+          <font>
+           <family>Agency FB</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>house</string>
+         </property>
+         <property name="font">
+          <font>
+           <family>Agency FB</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>-</string>
+         </property>
         </column>
        </widget>
-       <widget class="QLabel" name="label_c_info_4">
+       <widget class="QLabel" name="label_list_name">
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -884,11 +1298,41 @@ border:2px solid;</string>
          <font>
           <family>Agency FB</family>
           <pointsize>26</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
           <underline>true</underline>
          </font>
         </property>
         <property name="text">
          <string>XXX List :</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btn_delete_all">
+        <property name="geometry">
+         <rect>
+          <x>790</x>
+          <y>480</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dangerous&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Delete All</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>kill_all.png</normaloff>kill_all.png</iconset>
         </property>
        </widget>
       </widget>
@@ -939,6 +1383,7 @@ border:2px solid;</string>
      <addaction name="actionMyWallet"/>
      <addaction name="actionMyBag"/>
      <addaction name="actionDOGE_SHOP"/>
+     <addaction name="actionFAST_SHOP"/>
      <addaction name="separator"/>
      <addaction name="actionLog_out"/>
     </widget>
@@ -954,7 +1399,9 @@ border:2px solid;</string>
      <string>Seller Center</string>
     </property>
     <addaction name="actionShop_Manage"/>
+    <addaction name="actionFast_Manage"/>
     <addaction name="actionRelease_Card"/>
+    <addaction name="actionFast_Release"/>
     <addaction name="separator"/>
     <addaction name="actionManage_Password"/>
     <addaction name="separator"/>
@@ -1165,22 +1612,6 @@ border:2px solid;</string>
     </font>
    </property>
   </action>
-  <action name="actionCustomer_Service">
-   <property name="text">
-    <string>Customer Service</string>
-   </property>
-   <property name="font">
-    <font>
-     <family>Agency FB</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-  </action>
-  <action name="actionDoge_Cart">
-   <property name="text">
-    <string>Doge Cart</string>
-   </property>
-  </action>
   <action name="actionManage_Password">
    <property name="text">
     <string>Manage Password</string>
@@ -1192,7 +1623,42 @@ border:2px solid;</string>
     </font>
    </property>
   </action>
+  <action name="actionFast_Release">
+   <property name="text">
+    <string>Fast Release</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionFAST_SHOP">
+   <property name="text">
+    <string>FAST SHOP</string>
+   </property>
+  </action>
+  <action name="actionFast_Manage">
+   <property name="text">
+    <string>Fast Manage</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PieChartWidget</class>
+   <extends>QWidget</extends>
+   <header>piechartwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

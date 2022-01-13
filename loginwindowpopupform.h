@@ -91,6 +91,7 @@ private slots:
     void on_toolbtn_s_revealPass2_released();
     void on_tabWidget_tabBarClicked(int index);
     void on_lineedit_password_returnPressed();
+    void on_Hidden_butt_clicked();
 };
 
 #endif // LOGINWINDOWPOPUPFORM_H

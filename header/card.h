@@ -48,5 +48,6 @@ public:
         star=like;
     }
     void set_data(Card_in_shop x, int num);
+    void change_star();
 };
 #endif // CARD_H

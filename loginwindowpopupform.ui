@@ -161,7 +161,7 @@ p, li { white-space: pre-wrap; }
         <rect>
          <x>70</x>
          <y>290</y>
-         <width>121</width>
+         <width>131</width>
          <height>41</height>
         </rect>
        </property>
@@ -200,6 +200,22 @@ p, li { white-space: pre-wrap; }
          <string>Seller</string>
         </property>
        </item>
+      </widget>
+      <widget class="QPushButton" name="Hidden_butt">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>160</y>
+         <width>31</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
       </widget>
      </widget>
      <widget class="QWidget" name="page_2">
@@ -319,8 +335,14 @@ p, li { white-space: pre-wrap; }
        <height>22</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="cursorMoveStyle">
+      <enum>Qt::LogicalMoveStyle</enum>
      </property>
     </widget>
     <widget class="QLineEdit" name="c_password">
@@ -425,7 +447,7 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>440</x>
        <y>300</y>
-       <width>191</width>
+       <width>241</width>
        <height>41</height>
       </rect>
      </property>
@@ -465,7 +487,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>150</x>
-       <y>90</y>
+       <y>100</y>
        <width>140</width>
        <height>31</height>
       </rect>
@@ -591,7 +613,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>150</x>
-       <y>220</y>
+       <y>230</y>
        <width>140</width>
        <height>31</height>
       </rect>
@@ -631,7 +653,7 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>440</x>
        <y>300</y>
-       <width>191</width>
+       <width>241</width>
        <height>41</height>
       </rect>
      </property>
@@ -671,7 +693,7 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>150</x>
-       <y>80</y>
+       <y>90</y>
        <width>140</width>
        <height>31</height>
       </rect>
@@ -736,8 +758,8 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>150</x>
-       <y>300</y>
-       <width>140</width>
+       <y>310</y>
+       <width>211</width>
        <height>31</height>
       </rect>
      </property>

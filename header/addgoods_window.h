@@ -16,7 +16,6 @@ class AddGoods_window : public QDialog
 public:
     int page;
     int row_cards;
-    vector<Card> all_card;
     vector<Card_in_shop> shop_v;
     vector<QLineEdit *> num_in_v;
     vector<QLineEdit *> price_in_v;
@@ -25,7 +24,6 @@ public:
     AddGoods_window(int flag = 0, QWidget *parent = nullptr);
     ~AddGoods_window();
     virtual void card_grid_layout(int q, QGridLayout *grid, int row_idx);
-    //virtual void advance_grid_layout(int q, QGridLayout *grid, int row_idx);
     void clear_layout(QLayout* layout);
     void clear_lineEdit_v();
 
@@ -40,8 +38,11 @@ private slots:
 
     virtual void on_rownum_box_currentTextChanged(const QString &arg1);
 
+    virtual void on_search_clicked();
+
 private:
     Ui::AddGoods_window *ui;
+    vector<Card> all_card;
     vector<Card> sub_v;
 
     void reject() override;
